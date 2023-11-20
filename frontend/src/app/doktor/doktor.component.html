@@ -1,0 +1,228 @@
+<div class="topnav">
+    <a (click)="p(0)">Profil</a>
+    <a (click)="p(1)">Pregledi</a>
+    <a (click)="p(2)">Razno</a>
+    <a (click)="logOut()">LogOut</a>
+</div>
+<div *ngIf="page==0">
+    <img [src]="reg.slika" class="space"><br>
+    <div *ngIf="show==true" class="space">
+        <input type="file" [(ngModel)]='param[6]' id="34" (input)="onFileSelected($event)">
+        <button (click)=" update('slika') " id="32">Update</button>
+    </div>
+    <table>
+
+        <tr>
+            <td>Ime</td>
+            <td>{{reg.ime}}</td>
+            <td *ngIf="show==true">
+                <input type="text" [(ngModel)]='param[0]' id="2">
+                <button (click)=" update('ime') " id="3">Update</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Prezime</td>
+            <td>{{reg.prezime}}</td>
+            <td *ngIf="show==true">
+                <input type="text" [(ngModel)]='param[1]'>
+                <button (click)="update('prezime') " id="nesto1">Update</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Adresa</td>
+            <td>{{reg.adresa}}</td>
+            <td *ngIf="show==true">
+                <input type="text" [(ngModel)]='param[2]' id="a">
+                <button (click)="update('adresa')" id="nesto2">Update</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Kontakt telefon</td>
+            <td>{{reg.tel}}</td>
+            <td *ngIf="show==true">
+                <input type="text" [(ngModel)]='param[3]' id="s">
+                <button (click)="update('tel') " id="nesto3">Update</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Mejl</td>
+            <td>{{reg.mejl}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Specijalizacija</td>
+            <td>{{reg.specijalizacija}}</td>
+            <td *ngIf="show==true">
+                <select [(ngModel)]="param[4]">
+                    <option *ngFor="let i of spec" [value]="i.naziv">{{i.naziv}}</option>
+                </select>
+                <button (click)="update('specijalizacija') " id="nesto4">Update</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Br.Licence</td>
+            <td>{{reg.brLicence}}</td>
+            <td *ngIf="show==true">
+                <input type="text" [(ngModel)]='param[5]' id="g">
+                <button (click)="update('brLicence') " id="nesto4">Update</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Ogranak</td>
+            <td>{{reg.ogranak}}</td>
+            <td></td>
+        </tr>
+
+    </table>
+    <h2>Vrste pregleda</h2>
+    <select [(ngModel)]="vrsta">
+        <option *ngFor="let i of vs" [value]="i.naziv">{{i.naziv}}</option>
+    </select><br>
+    <button (click)="lozinka()">Promena lozinke</button>
+    <button (click)="showUpdate()">Azuriranje profila</button>
+</div>
+<!--Pregledi---------------------------->
+<div *ngIf="page==1">
+    <table class="space">
+        <tr>
+            <th>Pacijent</th>
+            <th>Datum</th>
+            <th>Vreme</th>
+            <th> </th>
+        </tr>
+        <tr *ngFor="let k of preg" (click)="Otkz(k)" class="tr">
+            <td>{{getIme(k.pacijent)}}</td>
+            <td>{{k.pocetak.getFullYear()}}-{{k.pocetak.getMonth()+1}}-{{k.pocetak.getDate()}}</td>
+            <td>{{k.vreme}}</td>
+            <td>
+
+            </td>
+        </tr>
+    </table>
+
+    <div class="space" *ngIf="show1">
+        <h3>Kliknite na pregled koji zelite da otkazete</h3><br>
+        <label>{{getIme(zaOtkz.pacijent)}}</label><br>
+        <label>{{zaOtkz.pocetak.getFullYear()}}-{{zaOtkz.pocetak.getMonth()+1}}-{{zaOtkz.pocetak.getDate()}}</label><br>
+        <label>{{zaOtkz.vreme}}</label><br><br>
+        Razlog: <input type="text" [(ngModel)]="obrazlozenje"><br>
+        <button class="space" (click)="updatePregled()">Otkazi pregled</button> <button class="space"
+            (click)="hideOtkaz()">Nazad</button>
+    </div>
+    <div *ngIf="show2" class="space">
+        <hr color="#bdbbbb">
+        <table class="space">
+            <tr>
+
+                <th>Datum</th>
+                <th>Vreme</th>
+                <th>Specijalizacija</th>
+                <th>Razlog Dolaska</th>
+                <th>Dijagnoza</th>
+                <th>Terapija</th>
+                <th>Naredna Kontrola</th>
+            </tr>
+            <tr *ngFor="let k of izv">
+
+                <td>{{k.datum.getFullYear()}}-{{k.datum.getMonth()+1}}-{{k.datum.getDate()}}</td>
+                <td>{{k.vreme}}</td>
+                <td>{{k.razlogDolaska}}</td>
+                <td>{{k.dijagnoza}}</td>
+                <td>{{k.terapija}}</td>
+                <td>{{k.narednaKontrola.getFullYear()}}-{{k.narednaKontrola.getMonth()+1}}-{{k.narednaKontrola.getDate()}}
+                </td>
+
+            </tr>
+        </table>
+        <hr color="#bdbbbb">
+
+    </div>
+    <div *ngIf="show3">
+        <table>
+            <tr>
+                <th>Pacijent</th>
+                <td><input type="text" [(ngModel)]="ipacijent"></td>
+            <tr>
+            <tr class="tr">
+                <th>Datum</th>
+                <td><input type="date" [(ngModel)]="idatum"></td>
+            <tr>
+                <th>Vreme</th>
+                <td><input type="datum" [(ngModel)]="ivreme"></td>
+            </tr>
+            <tr>
+                <th>Razlog Dolaska</th>
+                <td><input type="text" [(ngModel)]="irazlogDolaska"></td>
+            </tr>
+            <tr>
+                <th>Dijagnoza</th>
+                <td><input type="text" [(ngModel)]="idijagnoza"></td>
+            </tr>
+            <tr>
+                <th>Terapija</th>
+                <td><input type="text" [(ngModel)]="iterapija"></td>
+            </tr>
+            <tr>
+                <th>Naredna Kontrola</th>
+                <td><input type="date" [(ngModel)]="inarednaKontrola"></td>
+            </tr>
+        </table>
+        <button class="space" (click)="AddIzv()">Dodaj Izvestaj</button>
+        <button class="space" (click)="hideIzv()">Nazad</button>
+    </div>
+    <button *ngIf="!show1" (click)="showOtkazi()">Otkazi pregled</button> <button *ngIf="!show3"
+        (click)="showAddIzv()">Dodaj Izvestaj</button>
+
+</div>
+
+<!--Razno------------------------->
+<div *ngIf="page==2">
+    <h2>Dodavanje nove vrste pregleda</h2>
+    <table>
+        <tr>
+            <td>Naziv</td>
+            <td><input type="text" [(ngModel)]="nVrsta"></td>
+        </tr>
+        <tr>
+            <td>Specijalizacija</td>
+            <td> <select [(ngModel)]="nSpec">
+                    <option *ngFor="let i of spec" [value]="i.naziv">{{i.naziv}}</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Trajanje</td>
+            <td><input type="text" [(ngModel)]="nTr"></td>
+        </tr>
+        <tr>
+            <td>Cena</td>
+            <td><input type="text" [(ngModel)]="nCena"></td>
+        </tr>
+
+    </table>
+    <button class="space" (click)="newVrsta()">Posalji zahtev</button>
+    <hr color="#bdbbbb">
+    <h2>Dodavanje neradnih dana</h2>
+    <table>
+        <tr>
+            <td>Razlog</td>
+            <td><select [(ngModel)]="razN">
+                    <option value="bolovanje">Bolovanje</option>
+                    <option value="godisnji">Godisnji odmor</option>
+                    <option value="drugo">Drugo</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Od</td>
+            <td><input type="date" [(ngModel)]="odN"></td>
+        </tr>
+        <tr>
+            <td>Do</td>
+            <td><input type="date" [(ngModel)]="doN"></td>
+        </tr>
+
+    </table>
+    <button class="space" (click)="addND()">Unesi!</button>
+
+</div>

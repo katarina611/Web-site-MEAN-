@@ -1,0 +1,86 @@
+[{
+  "_id": {
+    "$oid": "65084885323b3fe3c1855046"
+  },
+  "lekar": "ana",
+  "vreme": "15:50",
+  "vrsta": "Dermatoloski pregled",
+  "pacijent": "zika",
+  "kraj": {
+    "$date": "2023-12-06T15:10:00.000Z"
+  },
+  "pocetak": {
+    "$date": "2023-12-06T14:50:00.000Z"
+  },
+  "otkazan": true,
+  "razlog": ""
+},
+{
+  "_id": {
+    "$oid": "65084885323f3fe3c1855046"
+  },
+  "kraj": {
+    "$date": "2023-09-26T14:20:00.000Z"
+  },
+  "pocetak": {
+    "$date": "2023-09-20T13:50:00.000Z"
+  },
+  "lekar": "ana",
+  "vreme": "15:30",
+  "vrsta": "Dermatoloski pregled+scener mladeza",
+  "pacijent": "zika",
+  "otkazan": false,
+  "razlog": "Kinika ne radi u tom trenutku"
+},
+{
+  "_id": {
+    "$oid": "6509a251efc8fed9c1c329df"
+  },
+  "vrsta": "Dermatoloski pregled",
+  "pocetak": {
+    "$date": "2023-09-20T09:55:00.000Z"
+  },
+  "kraj": {
+    "$date": "2023-09-20T09:35:00.000Z"
+  },
+  "vreme": "15:15",
+  "lekar": "ana",
+  "pacijent": "zika",
+  "otkazan": false,
+  "razlog": ""
+},
+{
+  "_id": {
+    "$oid": "65043885323b3fe3c1855046"
+  },
+  "lekar": "ana",
+  "vreme": "17:50",
+  "vrsta": "Dermatoloski pregled",
+  "pacijent": "zika",
+  "kraj": {
+    "$date": "2023-12-06T16:50:00.000Z"
+  },
+  "pocetak": {
+    "$date": "2023-12-06T17:10:00.000Z"
+  },
+  "otkazan": false,
+  "razlog": ""
+},
+{
+  "_id": {
+    "$oid": "650ace8fee4e3bfb76d1ea1a"
+  },
+  "vrsta": "Sistematski pregled školske dece",
+  "pocetak": {
+    "$date": "2023-09-25T13:14:00.000Z"
+  },
+  "kraj": {
+    "$date": "2023-09-25T13:44:00.000Z"
+  },
+  "vreme": "15:14",
+  "lekar": "mara",
+  "pacijent": "zika",
+  "otkazan": false,
+  "razlog": "",
+  "__v": 0
+}]

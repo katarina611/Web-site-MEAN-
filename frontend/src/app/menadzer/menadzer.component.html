@@ -1,0 +1,295 @@
+<div class="topnav">
+    <a (click)="p(0)">Svi korisnici</a>
+    <a (click)="p(1)">Zahtevi</a>
+    <a (click)="p(2)">Vrste po specijalizavijama</a>
+    <a (click)="p(3)">Dodaj promocije</a>
+    <a (click)="logOut()">LogOut</a>
+</div>
+<!--Svi korisnici------------------------------------------------------------------>
+<div *ngIf="page==0">
+    <h2>Doktori:</h2>
+    <table>
+        <th></th>
+        <th>Prezime</th>
+        <th>Ime</th>
+        <th>Korisnicko ime</th>
+        <th>Lozinka</th>
+        <th>Adresa</th>
+        <th>Telefon</th>
+        <th>Mejl</th>
+        <th>Br.Licence</th>
+        <th>Specijalizacija</th>
+        <th>Ogranak</th>
+        <th></th>
+        <tr *ngFor="let k of doc" (click)="showUpdate(k)">
+
+            <td><img [src]="k.slika" ></td>
+            <td>dr {{k.prezime}}</td>
+            <td>{{k.ime}}</td>
+            <td>{{k.korIme}}</td>
+            <td>{{k.lozinka}}</td>
+            <td>{{k.adresa}}</td>
+            <td>{{k.tel}}</td>
+            <td>{{k.mejl}}</td>
+            <td>{{k.brLicence}}</td>
+            <td>{{k.specijalizacija}}</td>
+            <td>{{k.ogranak}}</td>
+            <td><button (click)="deleteUser(k)" class="button2">Obrisi</button></td>
+        </tr>
+    </table>
+    <h2>Pacijenti:</h2>
+    <table>
+        <th></th>
+        <th>Prezime</th>
+        <th>Ime</th>
+        <th>Korisnicko ime</th>
+        <th>Lozinka</th>
+        <th>Adresa</th>
+        <th>Telefon</th>
+        <th>Mejl</th>
+        <th></th>
+        <tr *ngFor="let k of pac" (click)="showUpdate(k)">
+
+            <td><img [src]="k.slika"></td>
+            <td>dr {{k.prezime}}</td>
+            <td>{{k.ime}}</td>
+            <td>{{k.korIme}}</td>
+            <td>{{k.lozinka}}</td>
+            <td>{{k.adresa}}</td>
+            <td>{{k.tel}}</td>
+            <td>{{k.mejl}}</td>
+            <td><button (click)="deleteUser(k)" class="button2">Obrisi</button></td>
+
+        </tr>
+    </table>
+<!--UpdateUser------------------------------------------------------------------>
+    <div  *ngIf="show1">
+        <h1>Azuriraj podatke korisnika {{UpdateUser.prezime}} {{UpdateUser.ime}}</h1>
+        <p>Polje za azuriranje:  </p>
+        <select [(ngModel)]="tip" >
+            <option value="slika">Slika</option>
+            <option value="ime">Ime</option>
+            <option value="prezime">Prezime</option>
+            <option value="korIme">Korisnicko ime</option>
+            <option value="lozinka">Lozinka</option>
+            <option value="adresa">Adresa</option>
+            <option value="tel">Telefon</option>
+            <option value="mejl">Mejl</option>
+            <option  *ngIf="UpdateUser.tip=='doktor'"value="brLicence">Br.Licence</option>
+            <option *ngIf="UpdateUser.tip=='doktor'" value="specijalizacija">Specijalizacija</option>
+            <option *ngIf="UpdateUser.tip=='doktor'"value="ogranak">Ogranak</option>
+
+        </select><p>  </p>    
+        <input type="text" *ngIf="tip!='specijalizacija' && tip!='slika'" [(ngModel)]="updateTo"> 
+          
+        <select [(ngModel)]="updateTo" *ngIf="tip=='specijalizacija'"  >
+            <option *ngFor="let i of SveSpec" [value]="i.naziv">{{i.naziv}}</option>
+        </select>
+        <input type="file" *ngIf="tip=='slika'" (input)="onFileSelected($event)">
+        
+        <button class="space" (click)="update()">Azuriraj!</button>
+    </div>
+<!--Dodaj lekara------------------------------------------------------------------------->
+    <button class="space" (click)="showAddLekara()">Dodaj novog lekara</button>
+    <div *ngIf="show0">
+        <img [src]="userImage" class="space"><br>
+        <input type="file" class="space" (input)="onFileSelected($event)">
+        <table>
+
+            <tr>
+                <td>Korisnicko ime:</td>
+                <td><input type="text" [(ngModel)]="korIme">
+            </tr>
+            <tr>
+                <td>Lozinka:</td>
+                <td><input type="text" [(ngModel)]="lozinka"> </td>
+            </tr>
+            <tr>
+                <td>Lozinka ponovo:</td>
+                <td><input type="text" [(ngModel)]="pass"> </td>
+            </tr>
+            <tr>
+                <td>Ime:</td>
+                <td><input type="text" [(ngModel)]="ime"> </td>
+            </tr>
+            <tr>
+                <td>Prezime:</td>
+                <td><input type="text" [(ngModel)]="prezime"> </td>
+            </tr>
+            <tr>
+                <td>Adresa:</td>
+                <td><input type="text" [(ngModel)]="adresa"> </td>
+            </tr>
+            <tr>
+                <td>Telefon:</td>
+                <td><input type="text" [(ngModel)]="tel"> </td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="text" [(ngModel)]="mejl"> </td>
+            </tr>
+            <tr>
+                <td>Specijalizacija:</td>
+                <select [(ngModel)]="spec" >
+                    <option *ngFor="let i of SveSpec" [value]="i.naziv">{{i.naziv}}</option>
+                </select>
+            </tr>
+            <tr>
+                <td>brLicence:</td>
+                <td><input type="text" [(ngModel)]="brLicence"> </td>
+            </tr>
+            <tr>
+                <td>Ogranak:</td>
+                <td><input type="text" [(ngModel)]="ogranak"> </td>
+            </tr>
+        </table>
+        <button (click)="AddLekara()">Dodaj</button>
+        <p class="error">{{error}}</p>
+
+    </div>
+</div>
+<!--Zahtevi za registraciju------------------------------------------------------------------>
+<div *ngIf="page==1">
+    <h2>Zahtevi za registraciju:</h2>
+    <table>
+        <th></th>
+        <th>Prezime</th>
+        <th>Ime</th>
+        <th>Korisnicko ime</th>
+        <th>Lozinka</th>
+        <th>Adresa</th>
+        <th>Telefon</th>
+        <th>Mejl</th>
+        <th></th>
+        <tr *ngFor="let k of zah" >
+
+            <td><img [src]="k.slika"></td>
+            <td>dr {{k.prezime}}</td>
+            <td>{{k.ime}}</td>
+            <td>{{k.korIme}}</td>
+            <td>{{k.lozinka}}</td>
+            <td>{{k.adresa}}</td>
+            <td>{{k.tel}}</td>
+            <td>{{k.mejl}}</td>
+            <td><button (click)="prihvatiZahtev(k)" class="button2">Prihvati</button>
+                <button (click)="odbijZahtev(k)" class="button2">Odbij</button></td>
+
+        </tr>
+    </table>
+    <h2>Zahtevi za dodavanje nove vrste pregleda</h2>
+    <table>
+        <th>Naziv</th>
+        <th>Specijalizacija</th>
+        <th>Trajanje</th>
+        <th>Cena</th>
+        <th></th>
+        <th></th>
+        <tr *ngFor="let k of vs" >
+            <td>{{k.naziv}}</td>
+            <td>{{k.specijalizacija}}</td>
+            <td>{{k.trajanje}}</td>
+            <td>{{k.cena}}</td>
+            <td><button (click)="prihvatiVrstu(k)" class="button2">Prihvati</button>
+                <button (click)="odbijVrstu(k)" class="button2">Odbij</button></td>
+
+        </tr>
+    </table>
+</div>
+<div *ngIf="page==2">
+    <div class="space">
+    Specijalizacija:
+    <select [(ngModel)]="spec" (change)="ngOnInit()" >
+        <option *ngFor="let i of SveSpec" [value]="i.naziv">{{i.naziv}}</option>
+    </select>
+</div>
+    <table>
+        <th>Naziv</th>
+        <th>Trajanje</th>
+        <th>Cena</th>
+        <th></th>
+        <tr *ngFor="let k of vsOdobrene" (click)="showUpdateVrsta(k.naziv)" >
+            <td>{{k.naziv}}</td>
+            <td>{{k.trajanje}}</td>
+            <td>{{k.cena}}</td>
+        <td>   <button (click)="odbijVrstu(k)" class="button2">Obrisi</button></td>
+
+        </tr>
+    </table>
+    <button (click)="showAddVrsta()" class="space">Dodavanje nove vrste</button>
+
+    <div *ngIf="showAddVr">
+        <h2>Dodavanje nove vrste pregleda</h2>
+        <table>
+            <tr>
+                <td>Naziv</td>
+                <td><input type="text" [(ngModel)]="nVrsta"></td>
+            </tr>
+            <tr>
+                <td>Trajanje</td>
+                <td><input type="text" [(ngModel)]="nTr"></td>
+            </tr>
+            <tr>
+                <td>Cena</td>
+                <td><input type="text" [(ngModel)]="nCena"></td>
+            </tr>
+    
+        </table>
+        <button class="space" (click)="newVrsta()">Posalji zahtev</button>
+    </div>
+<!-----Azuriranje vrste---------------------------------------------------------------------------->
+    <div *ngIf="showUpdateVr">
+        <h2>Azuriranje vrste {{updateNazV}}</h2>
+        <select [(ngModel)]="tipVrsta" >
+            <option value="naziv">Naziv</option>
+            <option value="specijalizacija">Specijalizacija</option>
+            <option value="trajanje">Trajanje</option>
+            <option value="cena">Cena</option>
+        </select><br>
+         <input type="text" *ngIf="tipVrsta!='specijalizacija'" [(ngModel)]="paramVrste"> 
+          
+        <select [(ngModel)]="paramVrste" *ngIf="tipVrsta=='specijalizacija'"  >
+            <option *ngFor="let i of SveSpec" [value]="i.naziv">{{i.naziv}}</option>
+        </select>
+        <button class="space" (click)="updateVrstaEl()">Azuriraj!</button>
+    </div>
+<!-----------------Dodavanje spec ---------------------------------------------------------->
+    <hr color="#bdbbbb">
+    <h2>Dodavanje specijalije</h2>
+    Naziv: <input type="text" [(ngModel)]="newSpec"> 
+    <br>
+    <button (click)="addSpec()" class="space">Dodaj!</button>
+   
+</div>
+<div *ngIf="page==3">
+ 
+    <div class="space">
+        <h2>Dodavanje nove promocije</h2>
+        <table>
+            <tr>
+                <td>Vrsta</td>
+                <td><select [(ngModel)]="promoVrsta">
+                    <option value="vremenska">Vremenska</option>
+                    <option value="po broju puta">Po broju puta</option>
+                </select></td>
+            </tr>
+            <tr *ngIf="promoVrsta=='vremenska'">
+                <td>Od</td>
+                <td><input type="date" [(ngModel)]="promoOd"></td>
+            </tr>
+            <tr *ngIf="promoVrsta=='vremenska'">
+                <td>Do</td>
+                <td><input type="date" [(ngModel)]="promoDo"></td>
+            </tr>
+            <tr *ngIf="promoVrsta=='vremenska'">
+                <td>Popust</td>
+                <td><input type="text" [(ngModel)]="promoPosto"></td>
+            </tr>
+            <tr *ngIf="promoVrsta!='vremenska'">
+                <td>Broj puta</td>
+                <td><input type="text" [(ngModel)]="promoPobroju"></td>
+            </tr>
+    
+        </table>
+        <button class="space" (click)="addPromo()">Dodaj promociju!</button>
+    </div>
+</div>

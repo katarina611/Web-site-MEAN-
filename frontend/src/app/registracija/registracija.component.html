@@ -1,0 +1,41 @@
+
+
+<img [src]="userImage" class="space"><br>
+<input type="file" class="space" (input)="onFileSelected($event)"> 
+<table>
+
+    <tr>
+        <td>Korisnicko ime:</td>
+        <td><input type="text" [(ngModel)]="korIme">  
+    </tr>
+    <tr> 
+        <td>Lozinka:</td>
+        <td><input type="password" [(ngModel)]="lozinka">  </td>
+    </tr>
+    <tr>
+        <td>Lozinka ponovo:</td>
+        <td><input type="password" [(ngModel)]="pass"> </td>
+    </tr>
+    <tr>
+        <td>Ime:</td>
+        <td><input type="text" [(ngModel)]="ime">   </td>
+    </tr>
+    <tr>
+        <td>Prezime:</td>
+        <td><input type="text" [(ngModel)]="prezime">   </td>
+    </tr>
+    <tr>
+        <td>Adresa:</td>
+        <td><input type="text" [(ngModel)]="adresa">   </td>
+    </tr>
+    <tr>
+        <td>Telefon:</td>
+        <td><input type="text" [(ngModel)]="tel">   </td>
+    </tr>
+    <tr>
+        <td>Email:</td>
+        <td><input type="text" [(ngModel)]="mejl">   </td>
+    </tr>
+</table>
+<button (click)="reg()">Sing up</button>
+<p class="error">{{error}}</p>

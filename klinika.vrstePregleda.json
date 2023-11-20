@@ -1,0 +1,62 @@
+[{
+  "_id": {
+    "$oid": "6508467c0ec83f8b0784dba7"
+  },
+  "naziv": "Sistematski pregledi predškolske dece",
+  "specijalizacija": "Pedijatrija",
+  "trajanje": 45,
+  "cena": 3500,
+  "odobren": true
+},
+{
+  "_id": {
+    "$oid": "6508478b5805a1aa8bb0ed58"
+  },
+  "naziv": "Dermatoloski pregled",
+  "specijalizacija": "Dermatologija",
+  "trajanje": 20,
+  "cena": 2000,
+  "odobren": true
+},
+{
+  "_id": {
+    "$oid": "6508473b5805a1aa8bb0ed58"
+  },
+  "naziv": "Dermatoloski pregled+skener mladeza",
+  "specijalizacija": "Dermatologija",
+  "trajanje": 30,
+  "cena": 4000,
+  "odobren": false
+},
+{
+  "_id": {
+    "$oid": "650847fc353b1ec82535b200"
+  },
+  "naziv": "Sistematski pregled školske dece",
+  "specijalizacija": "Pedijatrija",
+  "trajanje": 30,
+  "cena": 4500,
+  "odobren": true
+},
+{
+  "_id": {
+    "$oid": "650a3cebd8cc89d1b05cc3e8"
+  },
+  "naziv": "Opsti pregled",
+  "specijalizacija": "Pedijatrija",
+  "trajanje": 30,
+  "cena": "1000",
+  "odobren": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650aa7605e9dcc64bde497a2"
+  },
+  "naziv": "Sistematski pregled",
+  "specijalizacija": "Genekologija",
+  "trajanje": 34,
+  "cena": 23,
+  "odobren": true,
+  "__v": 0
+}]

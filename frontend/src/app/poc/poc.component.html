@@ -1,0 +1,55 @@
+<h1>Klinicki centar projekta iz PIA-e</h1>
+<hr color="#bdbbbb">
+<h2>Opste informacije</h2>
+<p> Univerzitetski klinički centar projekta iz PIA-e, sa sedištem u Beogradu, jedinstvena je zdravstvena ustanova, nastala udruživanjem klinika, Elektrotehnickog fakulteta u Beogradu i autora ovog sajta. Formirana je kao nova organizacija: Klinički centar projekta iz PIA-e, 16 septembra 2023. godine. U svom sastavu KCS ima ukupno 41 organizacionu jedinicu: 23 klinike, devet centara, polikliniku i devet službi za uslužne delatnosti.</p>
+<h3>Osoblje:</h3> 
+<table>
+    <tr *ngFor="let k of doc">
+        <!--<td><img [src]="objectURL" /></td>-->
+        <td><img [src]="k.slika" ></td>
+        <td>dr {{k.prezime}}</td>
+        <td>{{k.ime}}</td>
+        <td>{{k.specijalizacija}}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><button class="button2" (click)="sortA(0)">Sort A-Z</button> <button (click)="sortZ(0)" class="button2">Sort Z-A</button></td>
+        <td><button class="button2" (click)="sortA(1)">Sort A-Z</button> <button (click)="sortZ(1)" class="button2">Sort Z-A</button></td>
+        <td><button class="button2" (click)="sortA(2)">Sort A-Z</button> <button (click)="sortZ(2)" class="button2">Sort Z-A</button></td>
+    
+    </tr>
+</table>
+<div class="space">
+<button (click)="on()" class="button1">Uloguj se</button> <button button (click)="off()" class="button1">Registruj se</button>
+</div>
+<div *ngIf="login==true">
+<app-login></app-login>
+</div>
+
+<div *ngIf="reg==true">
+    <app-registracija></app-registracija>
+</div>
+
+<hr color="#bdbbbb">
+<div class="gallery">
+    <img src="/assets/p(1).png" width="300" height="300" />
+</div>
+<div class="gallery">
+    <img src="/assets/p(2).jpg" width="300" height="300" />
+</div>
+
+<div class="gallery">
+    <img src="/assets/p(3).jpg" width="300" height="300" />
+</div>
+
+<div class="gallery">
+    <img src="/assets/p(4).jpg" width="300" height="300" />
+</div>
+
+<div class="gallery">
+    <img src="/assets/p(5).jpg" width="300" height="300" />
+</div>
+<div class="gallery">
+    <img src="/assets/p(6).jpg" width="300" height="300" />
+</div>
+<br/>

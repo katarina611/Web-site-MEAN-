@@ -1,0 +1,199 @@
+<div class="topnav">
+    <a (click)="p(0)">Profil</a>
+    <a (click)="p(1)">Lekari</a>
+    <a (click)="p(2)">Pregled izvestaja</a>
+    <a (click)="p(3)">Obavestenja</a>
+    <a (click)="logOut()">LogOut</a>
+</div>
+<div *ngIf="page==0">
+    <img [src]="reg.slika" class="space"><br>
+    <div *ngIf="show==true" class="space" >
+        <input type="file" [(ngModel)]='param[6]' id="34" (input)="onFileSelected($event)">
+        <button (click)=" update('slika') " id="32">Update</button>
+    </div>
+    <table>
+
+        <tr>
+            <td>Ime</td>
+            <td>{{reg.ime}}</td>
+            <td *ngIf="show==true">
+                <input type="text" [(ngModel)]='param[0]' id="2">
+                <button (click)=" update('ime') " id="3" class="button2">Update</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Prezime</td>
+            <td>{{reg.prezime}}</td>
+            <td *ngIf="show==true">
+                <input type="text" [(ngModel)]='param[1]'>
+                <button (click)="update('prezime') " id="nesto1" class="button2">Update</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Adresa</td>
+            <td>{{reg.adresa}}</td>
+            <td *ngIf="show==true">
+                <input type="text" [(ngModel)]='param[2]' id="a">
+                <button (click)="update('adresa')" id="nesto2"class="button2">Update</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Kontakt telefon</td>
+            <td>{{reg.tel}}</td>
+            <td *ngIf="show==true">
+                <input type="text" [(ngModel)]='param[3]' id="s">
+                <button (click)="update('tel') " id="nesto3" class="button2">Update</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Mejl</td>
+            <td>{{reg.mejl}}</td>
+            <td *ngIf="show==true">
+                <input type="text" [(ngModel)]='param[4]' id="f">
+                <button (click)="update('mejl') " id="nesto4" class="button2">Update</button>
+            </td>
+        </tr>
+
+    </table>
+    <button (click)="lozinka()">Promena lozinke</button>
+    <button (click)="showUpdate()">Azuriranje profila</button>
+</div>
+<!--Lekari---------------------------->
+<div *ngIf="page==1">
+    <div class="space"> Pretrazi ogranak: <input type="text" [(ngModel)]='searchParam'> <button (click)="search()"
+            class="button3">Search</button>
+    </div>
+    <table>
+        <tr *ngFor="let k of doc" (click)="StranicaLekara(k.korIme)">
+
+            <td><img [src]="k.slika"></td>
+            <td>dr {{k.prezime}}</td>
+            <td>{{k.ime}}</td>
+            <td>{{k.specijalizacija}}</td>
+            <td>{{k.ogranak}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button class="button2" (click)="sortA(0)">Sort A-Z</button> <button (click)="sortZ(0)"
+                    class="button2">Sort Z-A</button></td>
+            <td><button class="button2" (click)="sortA(1)">Sort A-Z</button> <button (click)="sortZ(1)"
+                    class="button2">Sort Z-A</button></td>
+            <td><button class="button2" (click)="sortA(2)">Sort A-Z</button> <button (click)="sortZ(2)"
+                    class="button2">Sort Z-A</button></td>
+            <td><button class="button2" (click)="sortA(3)">Sort A-Z</button> <button (click)="sortZ(3)"
+                    class="button2">Sort Z-A</button></td>
+
+        </tr>
+    </table>
+
+</div>
+<!--Izvestaji---------------------------->
+<div *ngIf="page==2">
+    <table class="space">
+        <tr>
+            <th>Vrsta pregleda</th>
+            <th>Datum</th>
+            <th>Vreme</th>
+            <th>Lekar</th>
+            <th>Odeljak</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let k of preg">
+            <td>{{k.vrsta}}</td>
+            <td>{{k.pocetak.getFullYear()}}-{{k.pocetak.getMonth()+1}}-{{k.pocetak.getDate()}}</td>
+            <td>{{k.vreme}}</td>
+            <td>{{getDoc(k.lekar,"ime")}}</td>
+            <td>{{getDoc(k.lekar,"odelj")}}</td>
+            <td><button (click)="deletePreg(k.pacijent,k.pocetak,k.lekar)" class="button2">Obrisi</button></td>
+        </tr>
+    </table>
+    <hr color="#bdbbbb">
+    <table  class="space">
+        <tr>
+
+            <th>Datum</th>
+            <th>Vreme</th>
+            <th>Lekar</th>
+            <th>Specijalizacija</th>
+            <th>Razlog Dolaska</th>
+            <th>Dijagnoza</th>
+            <th>Terapija</th>
+            <th>Naredna Kontrola</th>
+        </tr>
+        <tr *ngFor="let k of izv">
+
+            <td>{{k.datum.getFullYear()}}-{{k.datum.getMonth()+1}}-{{k.datum.getDate()}}</td>
+            <td>{{k.vreme}}</td>
+            <td>{{getDoc(k.lekar,"ime")}}</td>
+            <td>{{getDoc(k.lekar,"spec")}}</td>
+            <td>{{k.razlogDolaska}}</td>
+            <td>{{k.dijagnoza}}</td>
+            <td>{{k.terapija}}</td>
+            <td>{{k.narednaKontrola.getFullYear()}}-{{k.narednaKontrola.getMonth()+1}}-{{k.narednaKontrola.getDate()}}
+            </td>
+            
+        </tr>
+    </table>
+</div>
+<div *ngIf="page==3">
+<!--Obavestenja---------------------------->
+<h2>Promocije</h2>
+<table>
+    <th>Vrsta</th>
+    <th>Broj puta</th>
+    <th>Od</th>
+    <th>Do</th>
+    <th>Popust</th>
+    
+    <tr *ngFor="let i of promos">
+        
+        <td >{{i.tip}}</td>
+        <td >{{i.brPuta}}</td>
+        <td>{{i.od.getFullYear()}}-{{i.od.getMonth()+1}}-{{i.od.getDate()}}</td>
+        <td>{{i.do.getFullYear()}}-{{i.do.getMonth()+1}}-{{i.do.getDate()}}</td>
+        <td >{{i.postoCene}}</td>
+
+    </tr>
+
+</table>
+<!--OtkazivanjePregleda---------------------------->
+<hr color="#bdbbbb">
+<h2>Otkazani pregledi</h2>
+<table class="space">
+    <tr>
+        <th>Vrsta pregleda</th>
+        <th>Datum</th>
+        <th>Vreme</th>
+        <th>Lekar</th>
+        <th>Odeljak</th>
+        <th>Obrazlozenje</th>
+    </tr>
+    <tr *ngFor="let k of pregOtk">
+        <td>{{k.vrsta}}</td>
+        <td>{{k.pocetak.getFullYear()}}-{{k.pocetak.getMonth()+1}}-{{k.pocetak.getDate()}}</td>
+        <td>{{k.vreme}}</td>
+        <td>{{getDoc(k.lekar,"ime")}}</td>
+        <td>{{getDoc(k.lekar,"odelj")}}</td>
+        <td>{{k.razlog}}</td>
+    </tr>
+</table>
+<hr color="#bdbbbb">
+<!--Podsetnik---------------------------->
+<h2>Podsetnik za preglede u naredna 24h</h2>
+<table class="space">
+    <tr>
+        <th>Vrsta pregleda</th>
+        <th>Datum</th>
+        <th>Vreme</th>
+        <th>Lekar</th>
+        <th>Odeljak</th>
+    </tr>
+    <tr *ngFor="let k of pregDanas">
+        <td>{{k.vrsta}}</td>
+        <td>{{k.pocetak.getFullYear()}}-{{k.pocetak.getMonth()+1}}-{{k.pocetak.getDate()}}</td>
+        <td>{{k.vreme}}</td>
+        <td>{{getDoc(k.lekar,"ime")}}</td>
+        <td>{{getDoc(k.lekar,"odelj")}}</td>
+    </tr>
+</table>
+</div>

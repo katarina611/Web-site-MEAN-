@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "6509c73d107e6340d751e855"
+  },
+  "naziv": "Dermatologija"
+},
+{
+  "_id": {
+    "$oid": "6509c767107e6340d751e856"
+  },
+  "naziv": "Pedijatrija"
+},
+{
+  "_id": {
+    "$oid": "650a33a7d8cc89d1b05cc255"
+  },
+  "naziv": "Genekologija",
+  "__v": 0
+}]

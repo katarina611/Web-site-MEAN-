@@ -1,0 +1,13 @@
+<table class="space">
+    <tr>
+        <td>Korisnicko ime:</td>
+        <td><input type="text" [(ngModel)]="username">  </td>
+    </tr>
+    <tr> 
+        <td>Lozinka:</td>
+        <td><input type="password" [(ngModel)]="password">  </td>
+    </tr>
+</table>
+<button (click)="login()">Login</button>
+<br />
+<p class="error">{{error}}</p>

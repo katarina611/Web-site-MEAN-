@@ -1,0 +1,16 @@
+<table>
+<tr> 
+    <td>Stara lozinka:</td>
+    <td><input type="password" [(ngModel)]="stara">  </td>
+</tr>
+<tr> 
+    <td> Nova lozinka:</td>
+    <td><input type="password" [(ngModel)]="nova0">  </td>
+</tr>
+<tr> 
+    <td> Nova lozinka opet:</td>
+    <td><input type="password" [(ngModel)]="nova1">  </td>
+</tr>
+</table>
+<p style="color: red;">{{error}}</p>
+<button (click)="update()">Promeni</button>

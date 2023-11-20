@@ -1,0 +1,10 @@
+table{
+   height: 240px;
+   width: 380px;
+}
+.space{
+   padding: 30px 30px 30px 30px;
+}
+.error {
+   color: red;
+ }

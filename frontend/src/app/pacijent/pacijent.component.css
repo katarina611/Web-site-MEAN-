@@ -1,0 +1,39 @@
+.topnav {
+    overflow: hidden;
+    background-color: rgb(247, 214, 171);
+  }
+  
+  .topnav a {
+    float: left;
+    color: #c2c2c2;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: antiquewhite;
+    color:  rgb(255, 165, 63);
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #DDD;
+  }
+  tr:hover {background-color: white;}
+
+  .button3
+{
+  padding:none;
+  margin: none;
+  font-size: 12px;
+}
+input{
+  height: 20px;
+}

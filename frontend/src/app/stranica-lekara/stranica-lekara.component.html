@@ -1,0 +1,75 @@
+<h2>O doktoru:</h2>
+<table>
+    <img [src]="doc.slika">
+    <tr>
+        <td>Ime</td>
+        <td>{{doc.ime}}</td>
+    </tr>
+    <tr>
+        <td>Prezime</td>
+        <td>{{doc.prezime}}</td>
+    </tr>
+    <tr>
+        <td>Adresa</td>
+        <td>{{doc.adresa}}</td>
+    </tr>
+    <tr>
+        <td>Kontakt telefon</td>
+        <td>{{doc.tel}}</td>
+    </tr>
+    <tr>
+        <td>Mejl</td>
+        <td>{{doc.mejl}}</td>
+    </tr>
+    <tr>
+        <td>BrLicence</td>
+        <td>{{doc.brLicence}}</td>
+    </tr>
+    <tr>
+        <td>Specijalizacija</td>
+        <td>{{doc.specijalizacija}}</td>
+    </tr>
+    <tr>
+        <td>Ogranak</td>
+        <td>{{doc.ogranak}}</td>
+    </tr>
+
+</table>
+<hr color="#bdbbbb">
+<h2>Vrste pregleda</h2>
+<table>
+    <tr>
+        <th>Naziv</th>
+        <th>Trajanje</th>
+        <th>Cena</th>
+    </tr>
+    <tr *ngFor="let i of vs">
+        <td>{{i.naziv}}</td>
+        <td>{{i.trajanje}}</td>
+        <td>{{i.cena}}</td>
+    </tr>
+</table>
+<button (click)="addPreg()" *ngIf="!showZakazivanje">Zakazivivanje pregleda</button>
+<div *ngIf="showZakazivanje">
+    <hr color="#bdbbbb">
+    <p>Novi pregled:</p>
+    <table class="table2">
+        <tr>
+            <td>Naziv:</td>
+            <td>
+                <select [(ngModel)]="zNaziv" style="width:200px;height:25px;">
+                    <option *ngFor="let i of vs" [value]="i.naziv">{{i.naziv}}</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Datum:</td>
+            <td><input type="date"  [(ngModel)]="zPoc"  style="width:200px;height:25px;"></td>
+        </tr>
+        <tr>
+            <td>Vreme:</td>
+            <td><input type="text"  [(ngModel)]="zVreme" style="width:200px;height:20px;"></td>
+        </tr>
+    </table>
+    <button (click)="insertP()">Posalji!</button>
+</div>

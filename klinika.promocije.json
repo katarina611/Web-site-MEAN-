@@ -1,0 +1,56 @@
+[{
+  "_id": {
+    "$oid": "650aae3843d788fbb8770fbe"
+  },
+  "tip": "vremenska",
+  "od": {
+    "$date": "2023-09-19T00:00:00.000Z"
+  },
+  "do": {
+    "$date": "2023-09-29T00:00:00.000Z"
+  },
+  "brPuta": "0",
+  "postoCene": "52%",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650aae4c43d788fbb8770fc0"
+  },
+  "tip": "po broju puta",
+  "od": null,
+  "do": null,
+  "brPuta": "5",
+  "postoCene": "",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650aae7585cc3e04d42ce8cf"
+  },
+  "tip": "vremenska",
+  "od": {
+    "$date": "2023-09-27T00:00:00.000Z"
+  },
+  "do": {
+    "$date": "2023-09-29T00:00:00.000Z"
+  },
+  "brPuta": "0",
+  "postoCene": "40%",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650aae98c7b322d033390f22"
+  },
+  "tip": "vremenska",
+  "od": {
+    "$date": "2023-09-05T00:00:00.000Z"
+  },
+  "do": {
+    "$date": "2023-09-28T00:00:00.000Z"
+  },
+  "brPuta": "0",
+  "postoCene": "5%",
+  "__v": 0
+}]

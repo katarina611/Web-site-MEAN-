@@ -1,0 +1,44 @@
+h1,h2{
+    text-align: center;
+    text-transform: uppercase;
+}
+.button1
+{
+  padding: 16px 16px;
+}
+
+div.gallery {
+    margin: 10px;
+    float: left;
+    width: 250px;
+    
+    
+  }
+
+.space{
+  margin-top: 100px;
+  margin-bottom: 100px;
+  
+  display:flex;
+  justify-content: center;
+}
+
+  
+  div.gallery img {
+    width: 100%;
+    height: auto;
+  }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  padding-bottom: 30px;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #DDD;
+}
+
+tr:hover {background-color: white;}

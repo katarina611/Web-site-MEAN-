@@ -1,0 +1,35 @@
+[{
+  "_id": {
+    "$oid": "65084b88c38cda387939bf93"
+  },
+  "pacijent": "zika",
+  "datum": {
+    "$date": "2023-09-15T00:00:00.000Z"
+  },
+  "vreme": "14:30",
+  "lekar": "ana",
+  "specijalizacija": "Dermatologija",
+  "razlogDolaska": "Pregled mladeza",
+  "dijagnoza": "....",
+  "terapija": "//",
+  "narednaKontrola": "2025-12-06T00:00:00.000+00:00"
+},
+{
+  "_id": {
+    "$oid": "650aa6d35e9dcc64bde4976b"
+  },
+  "datum": {
+    "$date": "2023-09-18T13:15:00.000Z"
+  },
+  "vreme": "15:15",
+  "lekar": "ana",
+  "pacijent": "zika",
+  "specijalizacija": "Dermatologija",
+  "razlogDolaska": "Ponovna kontrola",
+  "dijagnoza": "....",
+  "terapija": "//",
+  "narednaKontrola": {
+    "$date": "2023-09-21T00:00:00.000Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,16 @@
+<table>
+    <tr>
+        <td>Korisnicko ime:</td>
+        <td><input type="text" [(ngModel)]="username">  </td>
+    </tr>
+    <tr> 
+        <td>Lozinka:</td>
+        <td><input type="password" [(ngModel)]="password">  </td>
+    </tr>
+</table>
+Pacijent <input type="radio" [(ngModel)]="tip" value="pacijent" />
+Doktor <input type="radio" [(ngModel)]="tip" value="doktor" />
+<br />
+<button (click)="login()">Login</button>
+<br />
+<p class="error">{{error}}</p>
